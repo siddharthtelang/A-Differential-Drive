@@ -33,7 +33,7 @@ class Obstacle:
         # circle1 obstacle
         x_offset = self.circle1_x_offset
         y_offset = self.circle1_y_offset
-        radius = self.circle1_radius
+        radius = self.circle1_radius + self.clearance
         if ((x-x_offset)**2 + (y-y_offset)**2 <= radius):
           print('Inside circle 1; avoid')
           return 1
