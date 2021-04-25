@@ -4,7 +4,10 @@ from Obstacle import *
 
 
 def halfRound(n):
-    return round(2*n)/2
+    val = round(2*n)/2
+    if (val == 10):
+      val -= 0.5
+    return val
 
 
 def toRadian(angle):

@@ -30,6 +30,10 @@ class Obstacle:
         self.rect2_width = 2
 
     def isInObstacleSpace(self, x, y):
+
+        if (x < 0 or x >= 10 or y < 0 or y >= 10):
+          print('Out of boundary -- Chup chap aat ye !')
+          return 1
         # circle1 obstacle
         x_offset = self.circle1_x_offset
         y_offset = self.circle1_y_offset
