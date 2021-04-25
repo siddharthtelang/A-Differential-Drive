@@ -8,7 +8,7 @@ class Obstacle:
         self.robot_radius = 0.354 / 2
         self.clearance = self.robot_radius + self.clearance
 
-        self.circle1_radius = 1
+        self.circle1_radius = 0.5
         self.circle2_radius = 1
         self.circle1_x_offset = 2
         self.circle1_y_offset = 2
