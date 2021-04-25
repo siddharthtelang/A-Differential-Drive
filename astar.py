@@ -95,12 +95,41 @@ def move(state, action, T, obs):
         thetan+=360
     return [Xn, Yn, thetan] , path_array, cost
 
+def visualize(viz, traversed_nodes, node_path):
+    fig, ax = plt.subplots(figsize = (10, 10))
+    ax.set(xlim=(0, 10), ylim = (0,10))
+    ax = viz.addObstacles2Map(ax)
+    ax.set_aspect("equal")
+    for node in traversed_nodes:
+        xi, yi, _ = node.getState()
+        points = node.getPathArray()
+        if points is not None:
+            for point in points:
+                xn, yn = point
+                ax.plot([xi, xn], [yi, yn], color="blue", linewidth = 0.5 )
+                xi, yi = xn, yn
+            plt.pause(0.000001)
+
+
+    for node in node_path:
+        xi, yi, _ = node.getState()
+        points = node.getPathArray()
+        if points is not None:
+            for point in points:
+                xn, yn = point
+                ax.plot([xi, xn], [yi, yn], color="red", linewidth = 0.5 )
+                xi, yi = xn, yn  
+            plt.pause(0.0001)
+
+    plt.show()
+    plt.close()
+
 def astar():
 
     h,w = 10,10
     threshold = 0.5
-    start_point = [0.5,0.5,0]
-    goal_state = [0.5, 8]
+    start_point = [5,3,0]
+    goal_state = [9,9]
     w1, w2 = 5, 10
     nodes = queue.PriorityQueue()
     init_node = Node(start_point, None, None, 0, None)
@@ -132,6 +161,9 @@ def astar():
             print('Goal reached')
             print("The cost of path: ", current_node.getCost())
             moves, node_path = current_node.getFullPath()
+
+            visualize(viz, traversed_nodes, node_path)
+
             goal_reached = True
 
             fp = open('path_points.csv', 'w')
