@@ -87,8 +87,12 @@ def move(state, action, T, obs):
         
         if obs.isInObstacleSpace(Xn, Yn):
             return None, None, None
-        
+
     thetan = int(toDegree(thetan))
+    if (thetan >= 360):
+        thetan-=360
+    if (thetan <= -360):
+        thetan+=360
     return [Xn, Yn, thetan] , path_array, cost
 
 def astar():
