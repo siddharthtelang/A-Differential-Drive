@@ -32,22 +32,22 @@ class Obstacle:
     def isInObstacleSpace(self, x, y):
 
         if (x < 0 or x >= 10 or y < 0 or y >= 10):
-          print('Out of boundary -- Chup chap aat ye !')
+          #print('Out of boundary !')
           return 1
         # circle1 obstacle
         x_offset = self.circle1_x_offset
         y_offset = self.circle1_y_offset
         radius = self.circle1_radius + self.clearance
-        if ((x-x_offset)**2 + (y-y_offset)**2 <= radius):
-          print('Inside circle 1; avoid')
+        if ((x-x_offset)**2 + (y-y_offset)**2 <= radius**2):
+          #print('Inside circle 1; avoid')
           return 1
 
         # circle2 obstacle
         x_offset = self.circle2_x_offset
         y_offset = self.circle2_y_offset
         radius = self.circle2_radius + self.clearance
-        if ((x-x_offset)**2 + (y-y_offset)**2 <= radius):
-          print('Inside circle 2; avoid')
+        if ((x-x_offset)**2 + (y-y_offset)**2 <= radius**2):
+          #print('Inside circle 2; avoid')
           return 1
 
         # square obstacle
@@ -56,7 +56,7 @@ class Obstacle:
         y1 = self.square1_corner1_y - self.clearance
         y2 = y1 + self.square_side  + 2*self.clearance
         if (x >= x1 and x <= x2 and y >= y1 and y <= y2):
-            print('Inside square, avoid')
+            #print('Inside square, avoid')
             return 1
 
         #rectangle obstacle 1
@@ -65,7 +65,7 @@ class Obstacle:
         y1 = self.rect1_corner1_y - self.clearance
         y2 = y1 + self.rect1_width  + 2*self.clearance
         if (x >= x1 and x <= x2 and y >= y1 and y <= y2):
-            print('Inside rectangle 1, avoid')
+            #print('Inside rectangle 1, avoid')
             return 1
 
         #rectangle obstacle 2
@@ -74,7 +74,7 @@ class Obstacle:
         y1 = self.rect2_corner1_y - self.clearance
         y2 = y1 + self.rect2_width  + 2*self.clearance
         if (x >= x1 and x <= x2 and y >= y1 and y <= y2):
-            print('Inside rectangle 1, avoid')
+            #print('Inside rectangle 1, avoid')
             return 1
 
         return 0
